@@ -11,7 +11,7 @@ echo "#########################################################"
 echo "# 卸载旧版本 -- 结束                                    #"
 echo "#########################################################"
 
-# 安装需要的软件包
+# 安装需要的依赖软件包
 echo ""
 echo ""
 echo "#########################################################"
@@ -22,13 +22,16 @@ echo "#########################################################"
 echo "# 安装需要的软件包 -- 结束                              #"
 echo "#########################################################"
 
-# 设置 yum 源
+# 设置 yum 源，清华镜像仓库，速度很快
 echo ""
 echo ""
 echo "#########################################################"
 echo "# 设置 yum 源 -- 开始                                   #"
 echo "#########################################################"
-yum-config-manager --add-repo https://download.docker.com/linux/centos/docker-ce.repo
+#根据你的发行版下载repo文件:
+wget -O /etc/yum.repos.d/docker-ce.repo https://download.docker.com/linux/centos/docker-ce.repo
+#把软件仓库地址替换为 TUNA:
+sed -i 's+download.docker.com+mirrors.tuna.tsinghua.edu.cn/docker-ce+' /etc/yum.repos.d/docker-ce.repo
 echo "#########################################################"
 echo "# 设置 yum 源 -- 结束                                   #"
 echo "#########################################################"
@@ -39,6 +42,7 @@ echo ""
 echo "#########################################################"
 echo "# 安装 docker-ce -- 开始                                #"
 echo "#########################################################"
+	
 yum -y install docker-ce
 echo "#########################################################"
 echo "# 安装 docker-ce -- 结束                                #"
@@ -73,7 +77,8 @@ echo ""
 echo "#########################################################"
 echo "# 安装docker-compose -- 开始                            #"
 echo "#########################################################"
-curl -L https://github.com/docker/compose/releases/download/1.22.0/docker-compose-$(uname -s)-$(uname -m) -o /usr/local/bin/docker-compose
+# 从国内镜像 get.daocloud.io 快速下载
+curl -L https://get.daocloud.io/docker/compose/releases/download/1.23.2/docker-compose-`uname -s`-`uname -m` > /usr/local/bin/docker-compose
 chmod +x /usr/local/bin/docker-compose
 echo "#########################################################"
 echo "# 安装docker-compose -- 结束                            #"
