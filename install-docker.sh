@@ -28,6 +28,8 @@ echo ""
 echo "#########################################################"
 echo "# 设置 yum 源 -- 开始                                   #"
 echo "#########################################################"
+#安装wget，如果已安装则会跳过
+yum -y install wget
 #根据你的发行版下载repo文件:
 wget -O /etc/yum.repos.d/docker-ce.repo https://download.docker.com/linux/centos/docker-ce.repo
 #把软件仓库地址替换为 TUNA:
@@ -101,6 +103,8 @@ echo ""
 echo "#########################################################"
 echo "# 添加 docker 国内镜像站点并重启docker -- 开始          #"
 echo "#########################################################"
+#创建目录：/etc/docker
+mkdir -p /etc/docker
 echo '{ "registry-mirrors": [ "https://registry.docker-cn.com" ] }' >> /etc/docker/daemon.json
 systemctl restart docker
 echo "#########################################################"
