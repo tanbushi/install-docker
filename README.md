@@ -7,8 +7,7 @@
 3、设置 yum 源，使用清华镜像仓库，速度很快
 
 4、安装 docker-ce
-
-5、安装docker-compose，从国内镜像 get.daocloud.io 快速下载
+5、安装docker-compose，从国内镜像 get.daocloud.io 快速下载，但目前发现下载很慢，甚至不容易成功，所以将 docker-compose 文件上传到了github，放到安装脚本 install-docker.sh 同级目录下，可一起打包下载到安装目录下，对 install-docker.sh 文件做了相应修改。 
 
 6、添加 docker 国内镜像站点并重启docker
 
