@@ -80,7 +80,10 @@ echo "#########################################################"
 echo "# 安装docker-compose -- 开始                            #"
 echo "#########################################################"
 # 从国内镜像 get.daocloud.io 快速下载
-curl -L https://get.daocloud.io/docker/compose/releases/download/1.23.2/docker-compose-`uname -s`-`uname -m` > /usr/local/bin/docker-compose
+#curl -L https://get.daocloud.io/docker/compose/releases/download/1.23.2/docker-compose-`uname -s`-`uname -m` > /usr/local/bin/docker-compose
+#curl -L https://github.com/docker/compose/releases/download/1.21.0/docker-compose-$(uname -s)-$(uname -m) -o /usr/local/bin/docker-compose
+# 由于下载太慢，找不到合适的站点下载 docker-compose，所以将该文件上传到了安装脚本同级目录下 2019-08-24 by tanbushi
+cp ./docker-compose /usr/local/bin/docker-compose
 chmod +x /usr/local/bin/docker-compose
 echo "#########################################################"
 echo "# 安装docker-compose -- 结束                            #"
